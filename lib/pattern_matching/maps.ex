@@ -12,19 +12,24 @@ defmodule PatternMatching.Maps do
   """
 
   def return_name(_value) do
-
   end
 
   def has_sides?(_value) do
-
   end
 
-  def net_change(_value) do
+  def net_change(%{initial_balance: initial_balance, ending_balance: ending_balance}) do
+    balance = ending_balance - initial_balance
+    {:ok, balance}
+  end
 
+  def net_change(%{name: _name, age: _age}) do
+    {:error, "Missing balance information"}
+  end
+
+  def net_change(%{country: _country, initial_balance: _initial_balance}) do
+    {:error, "Missing balance information"}
   end
 
   def classify_response(_response) do
-
   end
-
 end
