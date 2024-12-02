@@ -22,11 +22,7 @@ defmodule PatternMatching.Maps do
     {:ok, balance}
   end
 
-  def net_change(%{name: _name, age: _age}) do
-    {:error, "Missing balance information"}
-  end
-
-  def net_change(%{country: _country, initial_balance: _initial_balance}) do
+  def net_change(_other) do
     {:error, "Missing balance information"}
   end
 
