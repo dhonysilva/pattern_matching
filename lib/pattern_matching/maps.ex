@@ -32,6 +32,25 @@ defmodule PatternMatching.Maps do
     {:error, "Missing balance information"}
   end
 
-  def classify_response(_response) do
+  def classify_response(%{"success" => true, "token" => token} = _success) do
+    {:ok, token}
+  end
+
+  def classify_response(
+        %{"success" => false, "messages" => %{"general" => %{"result_code" => -1}}} = _response
+      ) do
+    {:error, :invalid}
+  end
+
+  def classify_response(
+        %{"success" => false, "messages" => %{"general" => %{"result_code" => 3}}} = _response
+      ) do
+    {:error, :retry}
+  end
+
+  def classify_response(
+        %{"success" => false, "account" => %{"status_code" => "3001"}} = _response
+      ) do
+    {:error, :frozen}
   end
 end
