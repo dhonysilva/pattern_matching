@@ -23,7 +23,20 @@ defmodule PatternMatching.Tuples do
     false
   end
 
+  def major_us_holiday({_, 12, _}) do
+    "Christmas"
+  end
+
+  def major_us_holiday({_, 7, _}) do
+    "4th of July"
+  end
+
+  def major_us_holiday({_, 1, _}) do
+    "New Years"
+  end
+
   def major_us_holiday(_erl_date) do
+    "Uh..."
   end
 
   def greet_user(_tuple), do: nil
