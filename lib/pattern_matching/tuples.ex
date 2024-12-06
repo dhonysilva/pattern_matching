@@ -15,7 +15,12 @@ defmodule PatternMatching.Tuples do
     day
   end
 
+  def has_three_elements?({_, _, _}) do
+    true
+  end
+
   def has_three_elements?(_tuple) do
+    false
   end
 
   def major_us_holiday(_erl_date) do
