@@ -15,7 +15,12 @@ defmodule PatternMatching.Maps do
     name
   end
 
-  def has_sides?(_value) do
+  def has_sides?(%{sides: sides}) do
+    sides
+  end
+
+  def has_sides?(_other) do
+    false
   end
 
   def net_change(%{initial_balance: initial_balance, ending_balance: ending_balance}) do
