@@ -23,7 +23,16 @@ defmodule PatternMatching.Binaries do
     {:error, "Unrecognized command"}
   end
 
-  def format_phone(_value) do
+  def format_phone(<<area::binary-size(3), three::binary-size(3), four::binary-size(4)>>) do
+    "(#{area}) #{three}-#{four}"
+  end
+
+  def format_phone(<<three::binary-size(3), four::binary-size(4)>>) do
+    "#{three}-#{four}"
+  end
+
+  def format_phone(other) do
+    other
   end
 
   def image_type(_value) do
