@@ -47,5 +47,12 @@ defmodule PatternMatching.Tuples do
     "Cannot greet"
   end
 
-  def add_to_result(_tuple), do: nil
+  def add_to_result({:ok, value}) do
+    result = value + 10
+    {:ok, result}
+  end
+
+  def add_to_result(error) do
+    error
+  end
 end
