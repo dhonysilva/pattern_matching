@@ -20,9 +20,23 @@ defmodule PatternMatching.Structs do
     {:error, "Doesn't have a name"}
   end
 
-  def create_greeting(_value) do
+  def create_greeting(%{active: false}) do
+    {:error, "Recipient is inactive"}
   end
 
-  def deactivate_user(_user) do
+  def create_greeting(%Customer{name: name}) do
+    {:ok, "Howdy customer #{name}!"}
+  end
+
+  def create_greeting(%User{name: name}) do
+    {:ok, "Greetings user #{name}!"}
+  end
+
+  def deactivate_user(%User{} = user) do
+    {:ok, %User{user | active: false}}
+  end
+
+  def deactivate_user(_other) do
+    {:error, "Not a User"}
   end
 end
