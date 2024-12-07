@@ -39,7 +39,13 @@ defmodule PatternMatching.Tuples do
     "Uh..."
   end
 
-  def greet_user(_tuple), do: nil
+  def greet_user({:ok, username}) do
+    "Hello #{username}!"
+  end
+
+  def greet_user({:error, _reason}) do
+    "Cannot greet"
+  end
 
   def add_to_result(_tuple), do: nil
 end
