@@ -46,7 +46,12 @@ defmodule PatternMatching.Lists do
     false
   end
 
+  def sum_pair([first, second] = _list) do
+    first + second
+  end
+
   def sum_pair(_list) do
+    :error
   end
 
   def sum_first_2(_list) do
