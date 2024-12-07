@@ -54,6 +54,11 @@ defmodule PatternMatching.Lists do
     :error
   end
 
-  def sum_first_2(_list) do
+  def sum_first_2([first, second | tail] = _list) do
+    [first + second | tail]
+  end
+
+  def sum_first_2(list) do
+    list
   end
 end
