@@ -19,7 +19,12 @@ defmodule PatternMatching.Lists do
     false
   end
 
+  def has_1_item?([_]) do
+    true
+  end
+
   def has_1_item?(_list) do
+    false
   end
 
   def at_least_one?(_list) do
