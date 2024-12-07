@@ -11,16 +11,21 @@ defmodule PatternMatching.Binaries do
   Fix or complete the code to make the tests pass.
   """
 
-  def identify_command(_value) do
+  def identify_command("SAY " <> text) do
+    {:say, text}
+  end
 
+  def identify_command("WAVE " <> username) do
+    {:wave, username}
+  end
+
+  def identify_command(_other) do
+    {:error, "Unrecognized command"}
   end
 
   def format_phone(_value) do
-
   end
 
   def image_type(_value) do
-
   end
-
 end
