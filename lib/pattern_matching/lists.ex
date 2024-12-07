@@ -27,7 +27,12 @@ defmodule PatternMatching.Lists do
     false
   end
 
+  def at_least_one?([_ | _rest]) do
+    true
+  end
+
   def at_least_one?(_list) do
+    false
   end
 
   def return_first_item(_list) do
