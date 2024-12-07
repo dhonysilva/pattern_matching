@@ -35,6 +35,20 @@ defmodule PatternMatching.Binaries do
     other
   end
 
+  @png_signature <<137::size(8), 80::size(8), 78::size(8), 71::size(8), 13::size(8), 10::size(8),
+                   26::size(8), 10::size(8)>>
+
+  @jpg_signature <<255::size(8), 216::size(8)>>
+
+  def image_type(<<@png_signature, _rest::binary>>) do
+    :png
+  end
+
+  def image_type(<<@jpg_signature, _rest::binary>>) do
+    :jpg
+  end
+
   def image_type(_value) do
+    :unknown
   end
 end
