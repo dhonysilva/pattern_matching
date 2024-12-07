@@ -38,7 +38,12 @@ defmodule PatternMatching.Lists do
   def return_first_item(_list) do
   end
 
+  def starts_with_1?([1 | _rest] = _list) do
+    true
+  end
+
   def starts_with_1?(_list) do
+    false
   end
 
   def sum_pair(_list) do
